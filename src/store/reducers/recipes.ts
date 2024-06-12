@@ -9,7 +9,7 @@ export const initialState: RecipesState = {
   list: data,
 };
 
-const recipesReducer = createReducer(initialState, () => {
+const recipesReducer = createReducer(initialState, (builder) => {
 });
 
 export default recipesReducer;

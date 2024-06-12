@@ -17,7 +17,7 @@ function Content({ title, text, recipes }: ContentProps) {
       {recipes && (
         <div className="content-list">
           {recipes.map((recipe) => (
-            <Card key={recipe.id} {...recipe} />
+            <Card key={recipe.id} {...recipe} level={` ` + recipe.difficulty} />
           ))}
         </div>
       )}
