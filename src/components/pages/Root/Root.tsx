@@ -4,7 +4,7 @@ import Loading from './Loading';
 import AppHeader from '../../elements/AppHeader';
 
 import './Root.scss';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { loadRecipes } from '../../../store/reducers/recipes';
 import { useAppDispatch } from '../../../hooks/redux';
@@ -21,6 +21,12 @@ function Root({ loading }: AppProps) {
   if (loading) {
     return <Loading />;
   }
+
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className="app">
       <AppHeader />

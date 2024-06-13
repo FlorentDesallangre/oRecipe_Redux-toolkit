@@ -15,8 +15,8 @@ import Loading from './components/pages/Root/Loading';
 
 // Je créer un root pour mon application (a partir d'un élément HTML)
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-
 const router = createBrowserRouter(createRoutesFromElements(
+  
   <Route path="/" element={<Root />} errorElement={<Error />} loader={Loading}>  
     <Route index element={<Home />} />
     <Route path="/recipe/:slug" element={<Recipe />} loader={Loading}/>

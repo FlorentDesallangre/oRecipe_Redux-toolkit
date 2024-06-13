@@ -2,6 +2,7 @@ import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
 import data from '../../data';
 import { Recipe } from '../../@types/recipe';
 import axios from 'axios';
+import { RootState } from '..';
 
 interface RecipesState {
   list: Recipe[];
@@ -19,6 +20,8 @@ export const loadRecipes = createAsyncThunk<Recipe[]>('RECIPES/LOAD_RECIPES', as
   }
   return data;
 })
+export const selectRecipes = (state: RootState) => state.recipes.list;
+export const selectIsLoading = (state: RootState) => state.recipes.loading;
 
 const recipesReducer = createReducer(initialState, (builder) => {
   builder.addCase(loadRecipes.pending, (state) => {
