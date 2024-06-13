@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useAppSelector } from '../../../hooks/redux';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
+import { loadRecipes } from '../../../store/reducers/recipes';
 
 
 function Menu() {
