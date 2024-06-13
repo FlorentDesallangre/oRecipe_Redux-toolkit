@@ -3,9 +3,11 @@ import { useAppSelector } from '../../../hooks/redux';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import { loadRecipes } from '../../../store/reducers/recipes';
+import { useDispatch } from 'react-redux';
 
 
 function Menu() {
+
   const {list} = useAppSelector((state: any) => state.recipes);
   return (
     <nav className="menu">

@@ -7,26 +7,28 @@ import './Root.scss';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { loadRecipes } from '../../../store/reducers/recipes';
-import { useAppDispatch } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 
-interface AppProps {
-  loading?: boolean;
-}
-
-function Root({ loading }: AppProps) {
+function Root() {
   const dispatch =  useAppDispatch();
+  const { loading } = useAppSelector((state) => state.recipes);
   useEffect(() => {
+    
     dispatch(loadRecipes());
   }, [dispatch]);
-  if (loading) {
-    return <Loading />;
-  }
+  
+  
+ 
 
   const {pathname} = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="app">
       <AppHeader />

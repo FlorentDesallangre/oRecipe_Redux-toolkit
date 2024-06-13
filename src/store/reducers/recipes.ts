@@ -1,5 +1,4 @@
 import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
-import data from '../../data';
 import { Recipe } from '../../@types/recipe';
 import axios from 'axios';
 import { RootState } from '..';
@@ -9,8 +8,8 @@ interface RecipesState {
   loading: boolean;
 }
 export const initialState: RecipesState = {
-  list: data,
-  loading: false
+  list: [],
+  loading: true
 };
 
 export const loadRecipes = createAsyncThunk<Recipe[]>('RECIPES/LOAD_RECIPES', async () => {
@@ -29,7 +28,7 @@ const recipesReducer = createReducer(initialState, (builder) => {
 }).addCase(loadRecipes.fulfilled, (state, action) => {
     console.log(action);
     state.loading = false;
-    state.list = action.payload
+    state.list = action.payload;
 }).addCase(loadRecipes.rejected, (state, action) => {
     state.loading = false;
     console.log(action);

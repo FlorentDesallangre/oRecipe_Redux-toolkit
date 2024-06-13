@@ -12,6 +12,7 @@ import Recipe from './components/pages/Recipe';
 import store from './store';
 import Root from './components/pages/Root/Root';
 import Loading from './components/pages/Root/Loading';
+import React from 'react';
 
 // Je créer un root pour mon application (a partir d'un élément HTML)
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -26,9 +27,10 @@ const router = createBrowserRouter(createRoutesFromElements(
 ))
 // On injecte notre application dans le DOM
 root.render(
-  
+  <React.StrictMode>
   <Provider store={store}>
     <RouterProvider router={router} />
-  </Provider>,
+  </Provider>
+  </React.StrictMode>
   
 );
